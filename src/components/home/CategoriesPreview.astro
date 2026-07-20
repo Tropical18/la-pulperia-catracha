@@ -1,7 +1,7 @@
 ---
 import Button from "../ui/Button.astro";
 import { getAllCategories } from "../../data/products";
-
+const base = import.meta.env.BASE_URL;
 const categories = getAllCategories();
 
 const icons: Record<string, string> = {
@@ -32,14 +32,14 @@ const colors: Record<string, string> = {
           Descubre nuestras <span class="text-primary">categorías</span>
         </h2>
       </div>
-      <Button variant="ghost" size="md" href="/tienda" class="hidden sm:inline-flex">
+      <Button variant="ghost" size="md" href={`${base}/tienda`} class="hidden sm:inline-flex">
         Ver todo <i class="ti ti-arrow-right"></i>
       </Button>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
       {categories.map((cat) => (
-        <a href={`/tienda/${cat.slug}`} class="group">
+        <a href={`${base}/tienda/${cat.slug}`} class="group">
           <div class="rounded-xl border border-gray-200 p-6 text-center transition-all duration-300 hover:shadow-lg hover:border-primary/30">
             <div class={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br ${colors[cat.slug] || "from-primary to-primary-dark"} flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}>
               <i class={`ti ${icons[cat.slug] || "ti-box"} text-2xl text-white`}></i>
@@ -51,7 +51,7 @@ const colors: Record<string, string> = {
     </div>
 
     <div class="mt-6 text-center sm:hidden">
-      <Button variant="ghost" size="md" href="/tienda">
+      <Button variant="ghost" size="md" href={`${base}/tienda`}>
         Ver todas las categorías <i class="ti ti-arrow-right"></i>
       </Button>
     </div>

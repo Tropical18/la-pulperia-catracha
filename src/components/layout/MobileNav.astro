@@ -1,8 +1,9 @@
 ---
+const base = import.meta.env.BASE_URL;
 const navItems = [
-  { label: "Inicio", href: "/", icon: "ti-home" },
-  { label: "Tienda", href: "/tienda", icon: "ti-shopping-bag" },
-  { label: "Categorías", href: "/tienda", icon: "ti-layout-grid" },
+  { label: "Inicio", href: base, icon: "ti-home" },
+  { label: "Tienda", href: `${base}/tienda`, icon: "ti-shopping-bag" },
+  { label: "Categorías", href: `${base}/tienda`, icon: "ti-layout-grid" },
   { label: "Contacto", href: "#", icon: "ti-mail" },
 ];
 ---
@@ -11,8 +12,8 @@ const navItems = [
   <div class="absolute inset-0 bg-black/50" id="mobileNavOverlay"></div>
   <div class="relative w-72 h-full bg-white shadow-xl overflow-y-auto">
     <div class="p-4 border-b border-gray-200 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/logos/logo-pcatracha-sinfondo.png" alt="La Pulpería Catracha" class="h-8 w-8 object-contain" />
+      <a href={base} class="flex items-center gap-2">
+        <img src={`${base}/logos/logo-pcatracha-sinfondo.png`} alt="La Pulpería Catracha" class="h-8 w-8 object-contain" />
         <span class="font-bold text-sm">Pulpería <span class="text-primary">Catracha</span></span>
       </a>
       <button id="mobileNavClose" class="text-gray-500 hover:text-gray-700" aria-label="Cerrar">
@@ -20,7 +21,7 @@ const navItems = [
       </button>
     </div>
 
-    <form action="/tienda" class="p-4 border-b border-gray-100">
+    <form action={`${base}/tienda`} class="p-4 border-b border-gray-100">
       <div class="relative">
         <label for="searchMobile" class="sr-only">Buscar</label>
         <input id="searchMobile" type="search" placeholder="Buscar productos..." readonly

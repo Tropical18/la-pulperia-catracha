@@ -9,7 +9,7 @@ import TestimonialSection from "../components/home/TestimonialSection.astro";
 import ProductGrid from "../components/tienda/ProductGrid.astro";
 import Button from "../components/ui/Button.astro";
 import { getAllProducts } from "../data/products";
-
+const base = import.meta.env.BASE_URL;
 const productos = getAllProducts();
 const destacados = productos.slice(0, 5);
 ---
@@ -30,7 +30,7 @@ const destacados = productos.slice(0, 5);
             Nuestros <span class="text-primary">productos</span>
           </h2>
         </div>
-        <Button variant="ghost" size="md" href="/tienda" class="hidden sm:inline-flex">
+        <Button variant="ghost" size="md" href={`${base}/tienda`} class="hidden sm:inline-flex">
           Ver todo <i class="ti ti-arrow-right"></i>
         </Button>
       </div>

@@ -2,6 +2,7 @@
 import ShopLayout from "../../layouts/ShopLayout.astro";
 import ProductDetail from "../../components/tienda/ProductDetail.astro";
 import { getAllProducts, getProductBySlug } from "../../data/products";
+const base = import.meta.env.BASE_URL;
 
 export function getStaticPaths() {
   return getAllProducts().map((p) => ({
@@ -29,7 +30,7 @@ const product = getProductBySlug(slug!);
         <div class="text-center py-16">
           <i class="ti ti-package-off text-5xl text-gray-300 mb-4 block"></i>
           <h2 class="text-2xl font-bold text-gray-500 mb-2">Producto no encontrado</h2>
-          <a href="/tienda" class="text-primary hover:underline">Volver a la tienda</a>
+          <a href={`${base}/tienda`} class="text-primary hover:underline">Volver a la tienda</a>
         </div>
       )}
     </div>

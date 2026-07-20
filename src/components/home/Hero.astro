@@ -1,5 +1,6 @@
 ---
 import Button from "../ui/Button.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-honduras-blue">
@@ -18,7 +19,7 @@ import Button from "../ui/Button.astro";
           Tu pulpería de confianza, 100% Catracha. Productos frescos, tradicionales y con el verdadero sabor de Honduras, directo a tu hogar.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <Button variant="outline" size="lg" href="/tienda" class="border-white text-white hover:bg-white hover:text-primary">
+          <Button variant="outline" size="lg" href={`${base}/tienda`} class="border-white text-white hover:bg-white hover:text-primary">
             <i class="ti ti-shopping-bag"></i>
             Ver Productos
           </Button>
@@ -30,7 +31,7 @@ import Button from "../ui/Button.astro";
       <div class="lg:w-1/2 flex justify-center">
         <div class="relative">
           <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center animate-pulse-slow">
-            <img src="/logos/logo-pcatracha-sinfondo.png" alt="La Pulpería Catracha" class="w-48 h-48 lg:w-60 lg:h-60 object-contain" />
+            <img src={`${base}/logos/logo-pcatracha-sinfondo.png`} alt="La Pulpería Catracha" class="w-48 h-48 lg:w-60 lg:h-60 object-contain" />
           </div>
           <div class="absolute -bottom-4 -right-4 bg-white/20 backdrop-blur-sm rounded-xl px-5 py-3 border border-white/30">
             <p class="text-white text-sm font-medium">🇭🇳 100% Catracho</p>

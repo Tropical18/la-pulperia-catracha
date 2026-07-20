@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+const base = import.meta.env.BASE_URL;
 
 interface Props {
   title?: string;
@@ -14,8 +15,8 @@ const { title = "La Pulpería Catracha — Tu pulpería de confianza, 100% Catra
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="icon" href={`${base}/favicon.ico`} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
