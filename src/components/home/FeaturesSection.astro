@@ -1,0 +1,26 @@
+---
+const features = [
+  { icon: "ti-leaf", title: "Productos Frescos", desc: "Seleccionados cuidadosamente para garantizar la mejor calidad" },
+  { icon: "ti-home", title: "Sabor a Hogar", desc: "Los mismos sabores que disfrutas en casa de tu abuela" },
+  { icon: "ti-map-pin", title: "Hecho en Honduras", desc: "Apoyamos a productores locales de todo el país" },
+  { icon: "ti-clock", title: "Compra Fácil", desc: "Tu pulpería abierta 24/7 desde cualquier dispositivo" },
+];
+---
+
+<section class="py-12 bg-primary-bg">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {features.map((f) => (
+        <div class="flex items-center gap-4 bg-white rounded-xl p-5 shadow-sm">
+          <div class="w-12 h-12 rounded-lg bg-primary-bg flex items-center justify-center shrink-0">
+            <i class={`ti ${f.icon} text-xl text-primary`}></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-900 text-sm">{f.title}</h4>
+            <p class="text-xs text-gray-500">{f.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

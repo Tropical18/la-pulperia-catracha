@@ -1,0 +1,42 @@
+---
+import { getAllCategories } from "../../data/products";
+
+const categories = getAllCategories();
+const totalProducts = 10;
+---
+
+<aside class="bg-white rounded-xl border border-gray-200 p-6">
+  <h3 class="font-semibold text-gray-900 mb-4">Categorías</h3>
+  <ul class="space-y-2 mb-8">
+    <li>
+      <a href="/tienda" class="flex items-center justify-between text-sm text-primary font-medium">
+        <span>Todos los productos</span>
+        <span class="text-xs bg-primary-bg text-primary px-2 py-0.5 rounded-full">{totalProducts}</span>
+      </a>
+    </li>
+    {categories.map((cat) => (
+      <li>
+        <a href={`/tienda/${cat.slug}`} class="flex items-center justify-between text-sm text-gray-600 hover:text-primary transition-colors">
+          <span>{cat.name}</span>
+          <span class="text-xs text-gray-400">~</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="border-t border-gray-100 pt-6">
+    <h3 class="font-semibold text-gray-900 mb-4">Precio</h3>
+    <div class="space-y-3 text-sm text-gray-600">
+      <div class="flex gap-2">
+        <div class="w-1/2">
+          <label class="sr-only">Precio mínimo</label>
+          <input type="text" placeholder="Min" readonly class="w-full border border-gray-300 rounded-lg py-2 px-3 text-sm outline-none" />
+        </div>
+        <div class="w-1/2">
+          <label class="sr-only">Precio máximo</label>
+          <input type="text" placeholder="Max" readonly class="w-full border border-gray-300 rounded-lg py-2 px-3 text-sm outline-none" />
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

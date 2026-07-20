@@ -1,0 +1,52 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-honduras-blue">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+  </div>
+  <div class="container max-w-7xl mx-auto px-4 relative z-10">
+    <div class="flex flex-col lg:flex-row items-center gap-12 py-16 lg:py-24">
+      <div class="lg:w-1/2 text-center lg:text-left">
+        <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          La Pulpería<br />
+          <span class="text-white/90">Catracha</span>
+        </h1>
+        <p class="text-lg text-white/80 mb-8 max-w-lg mx-auto lg:mx-0">
+          Tu pulpería de confianza, 100% Catracha. Productos frescos, tradicionales y con el verdadero sabor de Honduras, directo a tu hogar.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <Button variant="outline" size="lg" href="/tienda" class="border-white text-white hover:bg-white hover:text-primary">
+            <i class="ti ti-shopping-bag"></i>
+            Ver Productos
+          </Button>
+          <a href="#sobre-nosotros" class="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium">
+            Conócenos <i class="ti ti-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+      <div class="lg:w-1/2 flex justify-center">
+        <div class="relative">
+          <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center animate-pulse-slow">
+            <img src="/logos/logo-pcatracha-sinfondo.png" alt="La Pulpería Catracha" class="w-48 h-48 lg:w-60 lg:h-60 object-contain" />
+          </div>
+          <div class="absolute -bottom-4 -right-4 bg-white/20 backdrop-blur-sm rounded-xl px-5 py-3 border border-white/30">
+            <p class="text-white text-sm font-medium">🇭🇳 100% Catracho</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+</style>

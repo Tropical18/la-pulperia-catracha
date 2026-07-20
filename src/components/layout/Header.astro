@@ -1,0 +1,81 @@
+---
+const navItems = [
+  { label: "Inicio", href: "/" },
+  { label: "Tienda", href: "/tienda" },
+  { label: "Categorías", href: "/tienda", dropdown: ["Frijoles y Arroz", "Tortillas y Pan", "Lácteos", "Refrescos Naturales", "Dulces Típicos", "Abarrotes"] },
+  { label: "Contacto", href: "#" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+  <div class="bg-gray-50 py-1.5 border-b border-gray-100">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between text-xs text-gray-600">
+        <span><i class="ti ti-truck-delivery text-primary mr-1"></i> Envíos a todos los Estados Unidos</span>
+        <span class="hidden sm:block">🇭🇳 Orgullosamente Catrachos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between py-3">
+      <div class="flex items-center gap-4 lg:w-1/6">
+        <button id="mobileMenuBtn" class="block lg:hidden text-gray-700 hover:text-primary" aria-label="Menú">
+          <i class="ti ti-menu-2 text-2xl"></i>
+        </button>
+        <a href="/" class="flex items-center gap-3">
+          <img src="/logos/logo-pcatracha-sinfondo.png" alt="La Pulpería Catracha" class="h-10 w-10 object-contain" />
+          <span class="font-bold text-lg text-gray-900 hidden sm:block">Pulpería <span class="text-primary">Catracha</span></span>
+        </a>
+      </div>
+
+      <div class="hidden lg:block lg:w-2/5">
+        <form action="/tienda" class="relative">
+          <label for="searchHeader" class="sr-only">Buscar productos</label>
+          <input id="searchHeader" type="search" placeholder="Buscar productos..." readonly
+            class="w-full border border-gray-300 text-gray-900 rounded-lg py-2 px-4 pr-10 text-sm focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none cursor-pointer" />
+          <i class="ti ti-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+        </form>
+      </div>
+
+      <div class="flex items-center gap-5 lg:w-1/5 justify-end">
+        <a href="#" class="relative text-gray-600 hover:text-primary transition-colors hidden sm:block" title="Favoritos">
+          <i class="ti ti-heart text-xl"></i>
+          <span class="absolute -top-2 -right-2 bg-primary text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="#" class="text-gray-600 hover:text-primary transition-colors" title="Mi cuenta">
+          <i class="ti ti-user text-xl"></i>
+        </a>
+        <button class="relative text-gray-600 hover:text-primary transition-colors" title="Carrito">
+          <i class="ti ti-shopping-bag text-xl"></i>
+          <span class="absolute -top-2 -right-2 bg-primary text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="hidden lg:block border-t border-gray-100">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="flex items-center gap-1">
+        <button class="flex items-center gap-2 px-4 py-3 bg-primary text-white text-sm font-medium rounded-t-lg">
+          <i class="ti ti-layout-grid"></i>
+          Todas las Categorías
+        </button>
+        {navItems.map((item) => (
+          item.dropdown ? (
+            <div class="relative group">
+              <a href={item.href} class="flex items-center gap-1 px-4 py-3 text-sm text-gray-700 hover:text-primary transition-colors font-medium">
+                {item.label}
+                <i class="ti ti-chevron-down text-xs"></i>
+              </a>
+            </div>
+          ) : (
+            <a href={item.href} class="px-4 py-3 text-sm text-gray-700 hover:text-primary transition-colors font-medium">
+              {item.label}
+            </a>
+          )
+        ))}
+      </div>
+    </div>
+  </nav>
+</header>

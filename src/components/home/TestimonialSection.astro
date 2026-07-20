@@ -1,0 +1,57 @@
+---
+const testimonials = [
+  {
+    name: "María López",
+    location: "Tegucigalpa",
+    text: "Desde que descubrí La Pulpería Catracha, no he vuelto a comprar en otro lado. Los frijoles son como los de mi mamá, ¡pura calidad catracha!",
+    rating: 5,
+  },
+  {
+    name: "Carlos Mendoza",
+    location: "San Pedro Sula",
+    text: "El servicio es excelente. Los pedidos llegan súper rápido y todo fresco. Me encanta que apoyen a productores locales.",
+    rating: 5,
+  },
+  {
+    name: "Ana Rivera",
+    location: "Comayagua",
+    text: "Los dulces típicos me transportan a mi infancia. La pulpería de mis sueños hecha realidad. 100% recomendada.",
+    rating: 5,
+  },
+];
+---
+
+<section class="py-16 lg:py-20 bg-gray-50">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="inline-block px-3 py-1 bg-primary-bg text-primary text-sm font-medium rounded-full mb-4">
+        Testimonios
+      </span>
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Lo que dicen nuestros <span class="text-primary">clientes</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((t) => (
+        <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex gap-1 mb-4">
+            {Array.from({ length: t.rating }).map(() => (
+              <i class="ti ti-star-filled text-yellow-400 text-sm"></i>
+            ))}
+          </div>
+          <p class="text-gray-600 mb-6 text-sm leading-relaxed">"{t.text}"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary-bg flex items-center justify-center">
+              <span class="text-primary font-bold text-sm">{t.name.charAt(0)}</span>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 text-sm">{t.name}</p>
+              <p class="text-xs text-gray-500">{t.location}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

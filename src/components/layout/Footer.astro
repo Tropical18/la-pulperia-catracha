@@ -1,0 +1,84 @@
+---
+import { getAllCategories } from "../../data/products";
+
+const categories = getAllCategories();
+---
+
+
+<footer class="bg-gray-900 text-gray-300">
+  <div class="container max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <a href="/" class="flex items-center gap-3 mb-4">
+          <img src="/logos/logo-pcatracha-sinfondo.png" alt="La Pulpería Catracha" class="h-10 w-10 object-contain brightness-0 invert" />
+          <span class="font-bold text-lg text-white">Pulpería <span class="text-primary">Catracha</span></span>
+        </a>
+        <p class="text-sm text-gray-400 leading-relaxed mb-4">
+          Tu pulpería de confianza, 100% Catracha. Traemos lo mejor de Honduras directamente a tu mesa, con la calidez y el sabor que nos caracteriza.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-lg border border-gray-600 flex items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="Facebook">
+            <i class="ti ti-brand-facebook"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-lg border border-gray-600 flex items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="Instagram">
+            <i class="ti ti-brand-instagram"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-lg border border-gray-600 flex items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="WhatsApp">
+            <i class="ti ti-brand-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h6 class="text-white font-semibold mb-4">Categorías</h6>
+        <ul class="space-y-2.5 text-sm">
+          {categories.map((cat) => (
+            <li><a href={`/tienda/${cat.slug}`} class="hover:text-primary transition-colors">{cat.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h6 class="text-white font-semibold mb-4">Atención al Cliente</h6>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-primary transition-colors">Sobre Nosotros</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Preguntas Frecuentes</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Política de Envíos</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Términos y Condiciones</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h6 class="text-white font-semibold mb-4">Contácto</h6>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-2">
+            <i class="ti ti-map-pin text-primary mt-0.5"></i>
+            <span>2644 S 144TH ST<br />Seatac WA 98168<br />Unit B</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="ti ti-phone text-primary mt-0.5"></i>
+            <span>(206) 306-5745</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="ti ti-mail text-primary mt-0.5"></i>
+            <span>info@pulperiacatracha.hn</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="ti ti-clock text-primary mt-0.5"></i>
+            <span>Lun–Sáb: 7:00 AM – 8:00 PM</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-800">
+    <div class="container max-w-7xl mx-auto px-4 py-5">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500">
+        <span>© {new Date().getFullYear()} La Pulpería Catracha. Todos los derechos reservados.</span>
+        <span>Hecho con <span class="text-primary">♥</span> en Honduras</span>
+      </div>
+    </div>
+  </div>
+</footer>

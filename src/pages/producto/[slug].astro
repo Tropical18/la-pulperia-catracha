@@ -1,0 +1,37 @@
+---
+import ShopLayout from "../../layouts/ShopLayout.astro";
+import ProductDetail from "../../components/tienda/ProductDetail.astro";
+import { getAllProducts, getProductBySlug } from "../../data/products";
+
+export function getStaticPaths() {
+  return getAllProducts().map((p) => ({
+    params: { slug: p.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug!);
+---
+
+<ShopLayout title={`${product?.name ?? "Producto"} — La Pulpería Catracha`}>
+  <section class="py-10">
+    <div class="container max-w-7xl mx-auto px-4">
+      {product ? (
+        <ProductDetail
+          name={product.name}
+          category={product.category}
+          price={product.price}
+          originalPrice={product.originalPrice}
+          badge={product.badge}
+          description={product.description}
+        />
+      ) : (
+        <div class="text-center py-16">
+          <i class="ti ti-package-off text-5xl text-gray-300 mb-4 block"></i>
+          <h2 class="text-2xl font-bold text-gray-500 mb-2">Producto no encontrado</h2>
+          <a href="/tienda" class="text-primary hover:underline">Volver a la tienda</a>
+        </div>
+      )}
+    </div>
+  </section>
+</ShopLayout>

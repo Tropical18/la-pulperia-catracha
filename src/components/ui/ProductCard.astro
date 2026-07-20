@@ -1,0 +1,61 @@
+---
+import Button from "./Button.astro";
+import Badge from "./Badge.astro";
+
+interface Props {
+  name: string;
+  category: string;
+  price: number;
+  originalPrice?: number;
+  badge?: string;
+  badgeVariant?: "primary" | "red" | "yellow" | "green";
+  slug: string;
+}
+
+const { name, category, price, originalPrice, badge, badgeVariant = "red", slug } = Astro.props;
+---
+
+<div class="group relative rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:shadow-lg hover:border-primary/30">
+  <div class="relative overflow-hidden rounded-t-xl">
+    {badge && (
+      <div class="absolute top-3 left-3 z-10">
+        <Badge variant={badgeVariant}>{badge}</Badge>
+      </div>
+    )}
+    <a href={`/producto/${slug}`}>
+      <div class="aspect-square bg-gradient-to-br from-primary-bg to-primary/5 flex items-center justify-center p-8">
+        <div class="w-full h-full bg-white/60 rounded-full flex items-center justify-center">
+          <i class="ti ti-package text-6xl text-primary/40"></i>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="p-4">
+    <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">{category}</p>
+    <a href={`/producto/${slug}`}>
+      <h3 class="font-semibold text-gray-900 mb-2 truncate group-hover:text-primary transition-colors">{name}</h3>
+    </a>
+    <div class="flex items-center gap-1 mb-3">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <i class={`ti ti-star-filled text-xs ${i < 4 ? "text-yellow-400" : "text-gray-200"}`}></i>
+      ))}
+      <span class="text-xs text-gray-500 ml-1">(4.5)</span>
+    </div>
+    <div class="flex items-center justify-between">
+      <div>
+        {originalPrice ? (
+          <>
+            <span class="text-lg font-bold text-gray-900">${price.toFixed(2)}</span>
+            <span class="text-sm line-through text-gray-400 ml-2">L{originalPrice.toFixed(2)}</span>
+          </>
+        ) : (
+          <span class="text-lg font-bold text-gray-900">${price.toFixed(2)}</span>
+        )}
+      </div>
+      <Button variant="primary" size="sm" href={`/producto/${slug}`}>
+        <i class="ti ti-eye text-sm"></i>
+        Ver
+      </Button>
+    </div>
+  </div>
+</div>

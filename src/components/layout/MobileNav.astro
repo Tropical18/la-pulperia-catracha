@@ -1,0 +1,71 @@
+---
+const navItems = [
+  { label: "Inicio", href: "/", icon: "ti-home" },
+  { label: "Tienda", href: "/tienda", icon: "ti-shopping-bag" },
+  { label: "Categorías", href: "/tienda", icon: "ti-layout-grid" },
+  { label: "Contacto", href: "#", icon: "ti-mail" },
+];
+---
+
+<aside id="mobileNav" class="fixed inset-0 z-50 lg:hidden transition-all duration-300 -translate-x-full">
+  <div class="absolute inset-0 bg-black/50" id="mobileNavOverlay"></div>
+  <div class="relative w-72 h-full bg-white shadow-xl overflow-y-auto">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/logos/logo-pcatracha-sinfondo.png" alt="La Pulpería Catracha" class="h-8 w-8 object-contain" />
+        <span class="font-bold text-sm">Pulpería <span class="text-primary">Catracha</span></span>
+      </a>
+      <button id="mobileNavClose" class="text-gray-500 hover:text-gray-700" aria-label="Cerrar">
+        <i class="ti ti-x text-xl"></i>
+      </button>
+    </div>
+
+    <form action="/tienda" class="p-4 border-b border-gray-100">
+      <div class="relative">
+        <label for="searchMobile" class="sr-only">Buscar</label>
+        <input id="searchMobile" type="search" placeholder="Buscar productos..." readonly
+          class="w-full border border-gray-300 rounded-lg py-2 px-4 pr-10 text-sm outline-none focus:border-primary" />
+        <i class="ti ti-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+      </div>
+    </form>
+
+    <nav class="p-4">
+      <ul class="space-y-1">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href}
+              class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-bg hover:text-primary transition-colors font-medium">
+              <i class={`ti ${item.icon}`}></i>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="p-4 border-t border-gray-100">
+      <p class="text-xs text-gray-500 text-center">🇭🇳 Orgullosamente Catrachos</p>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const menuBtn = document.getElementById("mobileMenuBtn");
+  const mobileNav = document.getElementById("mobileNav");
+  const closeBtn = document.getElementById("mobileNavClose");
+  const overlay = document.getElementById("mobileNavOverlay");
+
+  function openNav() {
+    mobileNav.classList.remove("-translate-x-full");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeNav() {
+    mobileNav.classList.add("-translate-x-full");
+    document.body.style.overflow = "";
+  }
+
+  menuBtn?.addEventListener("click", openNav);
+  closeBtn?.addEventListener("click", closeNav);
+  overlay?.addEventListener("click", closeNav);
+</script>

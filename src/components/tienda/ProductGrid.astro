@@ -1,0 +1,33 @@
+---
+import ProductCard from "../ui/ProductCard.astro";
+
+interface Producto {
+  name: string;
+  category: string;
+  price: number;
+  originalPrice?: number;
+  badge?: string;
+  slug: string;
+}
+
+interface Props {
+  productos: Producto[];
+}
+const { productos } = Astro.props;
+---
+
+{
+  productos.length > 0 ? (
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+      {productos.map((p) => (
+        <ProductCard {...p} />
+      ))}
+    </div>
+  ) : (
+    <div class="text-center py-16">
+      <i class="ti ti-package text-5xl text-gray-300 mb-4 block"></i>
+      <h3 class="text-xl font-semibold text-gray-500 mb-2">Próximamente</h3>
+      <p class="text-gray-400">Estaremos agregando productos muy pronto. ¡Vuelve a visitarnos!</p>
+    </div>
+  )
+}

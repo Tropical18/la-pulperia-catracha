@@ -1,0 +1,22 @@
+---
+interface Props {
+  price: number;
+  originalPrice?: number;
+  class?: string;
+}
+
+const { price, originalPrice, class: className = "" } = Astro.props;
+const discount = originalPrice ? Math.round((1 - price / originalPrice) * 100) : 0;
+---
+
+<div class={`flex items-center gap-2 ${className}`}>
+  <span class="text-xl font-bold text-gray-900">${price.toFixed(2)}</span>
+  {
+    originalPrice && (
+      <>
+        <span class="text-sm line-through text-gray-400">${originalPrice.toFixed(2)}</span>
+        <span class="text-xs font-semibold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">{discount}%</span>
+      </>
+    )
+  }
+</div>

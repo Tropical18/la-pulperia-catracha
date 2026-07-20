@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00BCE4;
+  --color-primary-dark: #0099bb;
+  --color-primary-light: #66d9f0;
+  --color-primary-bg: #e6f8fc;
+  --color-honduras-blue: #003B7B;
+  --color-honduras-blue-light: #004fa3;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

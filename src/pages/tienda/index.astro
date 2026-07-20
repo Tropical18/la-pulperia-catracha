@@ -1,0 +1,33 @@
+---
+import ShopLayout from "../../layouts/ShopLayout.astro";
+import ProductGrid from "../../components/tienda/ProductGrid.astro";
+import ProductFilters from "../../components/tienda/ProductFilters.astro";
+import { getAllProducts } from "../../data/products";
+
+const productos = getAllProducts();
+---
+
+<ShopLayout title="Tienda — La Pulpería Catracha" description="Explora todos nuestros productos hondureños. Frijoles, tortillas, lácteos, dulces típicos y más.">
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container max-w-7xl mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Nuestra Tienda</h1>
+      <p class="text-gray-600">{productos.length} productos — 100% Catrachos.</p>
+    </div>
+  </section>
+
+  <section class="py-10">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="lg:w-1/4">
+          <ProductFilters />
+        </div>
+        <div class="lg:w-3/4">
+          <div class="flex items-center justify-between mb-6">
+            <p class="text-sm text-gray-500">Mostrando {productos.length} productos</p>
+          </div>
+          <ProductGrid productos={productos} />
+        </div>
+      </div>
+    </div>
+  </section>
+</ShopLayout>
